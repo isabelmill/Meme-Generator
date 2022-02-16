@@ -1,0 +1,403 @@
+@import 'setup/typography.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+body {
+    background-color: rgb(221, 220, 220);
+}
+
+.main-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-header {
+    color: white;
+    background-color: #ff7f00;
+}
+
+.main-header .header-container {
+    width: 100%;
+    height: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 30px;
+}
+
+.memes-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 60px solid rgb(221, 220, 220);
+    border-top: 30px solid rgb(221, 220, 220);
+    background-color: rgb(221, 220, 220);
+}
+
+.gallery-img {
+    cursor: pointer;
+    height: 200px;
+    border-radius: 5px;
+    opacity: 0.9;
+}
+
+.main-layout {
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: Montserrat;
+    font-size: 2.0rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-header .main-nav a {
+    display: flex;
+    font-size: 1.4rem;
+    font-family: Montserrat;
+    height: 22.8px;
+    width: 36.7px;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow .3s;
+    cursor: pointer;
+    margin-left: 50px;
+    padding: 50px;
+    text-align: center;
+}
+
+.main-header .main-nav a:hover {
+    color: white;
+    box-shadow: inset 0px -6px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7f00;
+    flex-direction: column;
+    height: 103px;
+    width: 100%;
+}
+
+.main-footer small {
+    font-family: Montserrat;
+    letter-spacing: 0.05rem;
+    color: white;
+    text-align: center;
+}
+
+.logo-footer {
+    font-family: Montserrat;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+
+.btns {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+
+input {
+    font-size: 1.1rem;
+    font-family: Montserrat;
+    padding: 20px;
+    width: 280px;
+    height: 10px;
+    font-weight: 500;
+    margin-left: 70px;
+    background-color: white;
+    border: 0px solid;
+    cursor: pointer;
+    border: none;
+    resize: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    object-fit: contain;
+
+}
+
+canvas {
+    border: 2px solid #ff7f00;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.meme-editor {
+    display: flex;
+    margin: 35px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+.canvas-container {
+    display: flex;
+    max-width: 1200px;
+    height: 500px;
+}
+
+.text-line {
+    width: 300px !important;
+    height: 30px !important;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    margin-bottom: 10px;
+    cursor: unset;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-line:hover {
+    color: black;
+    box-shadow: unset;
+}
+
+.editor {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: column;
+
+}
+
+.btns-first-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 35px;
+}
+
+.btns-second-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+
+.btns-third-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.btns-fourth-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.save-btn {
+    width: 70px;
+    height: 40px;
+    margin: 10px 0 0 127px;
+    border-radius: 6px;
+    background-color: #ff7f00;
+    color: white;
+    font-family: Montserrat;
+    border: 2px solid #ff7f00;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.download-btn {
+    width: 155px;
+    height: 40px;
+    margin: 10px 0 0 127px;
+    border-radius: 6px;
+    background-color: #ff7f00;
+    color: white;
+    font-family: Montserrat;
+    border: 2px solid #ff7f00;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.upload-btn {
+    width: 70px;
+    height: 40px;
+    margin: 10px 0 0 127px;
+    border-radius: 6px;
+    background-color: #ff7f00;
+    color: white;
+    font-family: Montserrat;
+    border: 2px solid #ff7f00;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 35px;
+    height: 35px; */
+    margin: 4px 7px 0 10px;
+    padding: 5.3px 5px 5.3px 5.5px;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+
+.font-select {
+    width: 160px;
+    height: 35px;
+    margin: 5px 9px 0 0;
+    padding: 5.3px 5px 5.3px 5.5px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 2px solid white;
+}
+
+.stickers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 290px;
+    height: 100px;
+    margin: 15px 0 10px 0.5px;
+    padding: 16px 3.7px;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sticker {
+    width: 60px;
+    height: 60px;
+    margin: 0 17.5px 0 5.8px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+
+.about-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background-color: white;
+    gap: 10px;
+}
+
+.about-me-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-img {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    margin: 0;
+}
+
+.me {
+    max-height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.about-text {
+    width: 400px;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: Montserrat;
+    margin-left: 0;
+}
+
+.about-me-btns {
+    display: flex;
+
+}
+
+
+
+
+
+/* helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.flex-column {
+    flex-direction: column;
+}
+
+.hide {
+    display: none;
+}
+
+/* list */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

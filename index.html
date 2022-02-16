@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="init()">
+
+    <div class="main-screen" onclick="toggleMenu()" class="main-screen"></div>
+    <header class="main-header">
+        <div class="header-container main-layout flex space-between align-center">
+            <div class="logo" onclick="openGallery()">MEME - GENERATOR</div>
+            <nav class="main-nav-conatiner">
+                <ul class="main-nav clean-list flex">
+                    <li><a>Gallery</a></li>
+                    <li><a>Memes</a></li>
+                    <li><a href="#about" style="color:white">About</a></li>
+                </ul>
+            </nav>
+            <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
+        </div>
+    </header>
+
+    <!-- Main Gallery layout  -->
+    <main class="main-layout">
+        <section>
+            <div class="btns ">
+                <input list="keys" placeholder="Filter Here" class="filter-choice" onchange="onFilter(this.value)">
+                <datalist id="keys">
+                    <option value="Funny"></option>
+                </datalist>
+                <div class="search-icon">
+                    <img class="search-icon" src="/ICONS/search-icon.png" alt="">
+                </div>
+            </div>
+            <!-- here will be the most common words  -->
+            </div>
+
+            <!-- Rendering the memes here  -->
+            <section>
+                <div class="memes-gallery ">
+                </div>
+            </section>
+
+            <!-- The meme Editor  -->
+            <section class="meme-editor hide">
+                <div class="canvas-container">
+                    <canvas class="canvas"></canvas>
+                </div>
+
+                <!-- The text Input  -->
+                <div class="editor">
+                    <input class="text-line" type="text" placeholder="Add Text Here" oninput="setLineTxt(this.value)">
+
+                    <!-- Edit buttons - first row  -->
+                    <div class="btns-first-editor">
+                        <button class="icon-btn" onclick="switchLine()" data-name="Switch-Line">
+                            <img class="icon" src="/ICONS/up-and-down-opposite-double-arrows-side-by-side.png">
+                        </button>
+                        <button class="icon-btn" onclick="addLine()" data-name="Add Line">
+                            <img class="icon" src="/ICONs/add.png" />
+                        </button>
+                        <button class="icon-btn" onclick="deleteLine()" data-name="Delete Line">
+                            <img class="icon" src="/ICONS/trash.png">
+                        </button>
+                    </div>
+
+                    <!-- Edit buttons - second row  -->
+                    <div class="btns-second-editor">
+                        <button class="icon-btn" onclick="changeFontSize()" data-name="Increase Font">
+                            <img class="icon" src="/ICONS/increase font - icon.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="changeFontSize()" data-name="Decrease Font">
+                            <img class="icon" src="/ICONS/decrease font - icon.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="setAlign('start')" data-name="Align Start">
+                            <img class="icon" src="/ICONS/align-to-left.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="setAlign('center')" data-name="Align Center">
+                            <img class="icon" src="/ICONS/center-text-alignment.png" alt="" />
+                        </button>
+                        <button class="icon-btn" onclick="setAlign('end')" data-name="Align End">
+                            <img class="icon" src="/ICONS/align-to-right.png" alt="" />
+                        </button>
+                    </div>
+
+                    <!-- Edit buttons - third row  -->
+                    <div class="btns-third-editor">
+                        <select class="font-select" onchange="setFont(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                        </select>
+
+                        <button class="icon-btn" onclick="openColorPicker(true)" data-name="Stroke Color">
+                            <img class="icon" src="/ICONS/text stroke.png" alt="" />
+                        </button>
+                        <input class="stroke-color-input" type="color" oninput="changeStrokeColor()" hidden>
+
+                        <button class="icon-btn" onclick="openColorPicker(false)" data-name="Fill Color">
+                            <img class="icon" src="/ICONS/paint-board-and-brush.png" alt="" />
+                        </button>
+                        <input class="color-input" type="color" oninput="changeColor()" hidden>
+                    </div>
+
+                    <!-- Editor stickers  -->
+                    <div class="stickers">
+                        <img class="sticker" src="/stickers/boy.png" onclick="onStickerSelect(this)" alt="">
+                        <img class="sticker" src="/stickers/bae.png" onclick="onStickerSelect(this)" alt="">
+                        <img class="sticker" src="/stickers/pika.png" onclick="onStickerSelect(this)" alt="">
+                    </div>
+
+                    <!-- Edit buttons - fourth row  -->
+                    <div class="btns-fourth-editor">
+                        <button class="save-btn" onclick="onSaveMeme()" data-name="save">
+                            Save
+                        </button>
+                        <button class="download-btn" data-name="download">
+                            <a onclick="onDownloadMeme(this)">Download Meme</a>
+                        </button>
+                        <button class="upload-btn" data-name="upload">
+                            <a onclick="onUploadImg()">Share</a>
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+    </main>
+
+    <!-- About me section  -->
+    <div class="about-me">
+        <div class="about-me-container">
+            <div class="my-img">
+                <img class="me" src="/my-img/me.jpg" alt="">
+            </div>
+            <div class="about-text">
+                <h4>Isabel Mill</h4>
+                <br />
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione minus veritatis quo numquam eaque.
+                </p>
+                <br />
+                <div class="about-me-btns" id="about">
+                    <a class="icon-btn" href="https://www.facebook.com/profile.php?id=100010707871314">
+                        <img class="icon " src="/ICONS/facebook-logo.png" alt="" />
+                    </a>
+                    <a class="icon-btn" href="https://github.com/isabelmill">
+                        <img class="icon " src="/ICONS/github-logo.png" alt="" />
+                    </a>
+                    <a class="icon-btn" href="http://linkedin.com/in/isabel-mill-bb5a05177" target="_blank">
+                        <img class="icon " src="/ICONS/linkedin-logo.png" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer  -->
+    <footer class="main-footer">
+        <div class="logo-footer">
+            MEME - GENERATOR
+        </div>
+        <small>© 2022 Isabel Mill - All Rights Reserved </small>
+    </footer>
+
+    <script src="js/i18n-service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/upload-service.js"></script>
+    <script src="js/services/galley.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
+</body>
+
+</html>
