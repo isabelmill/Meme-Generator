@@ -40,7 +40,7 @@ function _createImages() {
 function _createImg(keywords) {
     const img = {
         id: imgId++,
-        url: `/img/${imgId}.jpg`,
+        url: `./img/${imgId}.jpg`,
         keywords,
     }
     return img
