@@ -6,9 +6,9 @@ function uploadImg() {
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        document.querySelector('.share-btn').innerHTML = `
+        document.querySelector('.upload-btn').innerHTML = `
         <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-           Share to Facebook   
+           Share   
         </a>`
     }
 

@@ -431,7 +431,7 @@ body.menu-open .main-screen {
 }
 
 .main-layout {
-    width: 980px;
+    width: 1000px;
     margin: 0 auto;
     padding-left: 0;
     padding-right: 0;
@@ -467,8 +467,10 @@ body.menu-open .main-screen {
     }
 
     .canvas {
-        min-width: 10%;
-        margin-bottom: 30px;
+        /* min-width: 60%; */
+        /* margin-bottom: 30px; */
+        width: 350px;
+        height: 400px;
     }
 
     .rights {
@@ -477,8 +479,13 @@ body.menu-open .main-screen {
     }
 
     .canvas-container {
-        margin-left: auto;
-        margin-right: auto;
+        /* margin-bottom: 30px; */
+        align-items: center;
+        justify-content: center;
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        width: 350px;
+        height: 500px;
     }
 
     .btn-menu {
@@ -549,7 +556,7 @@ body.menu-open .main-screen {
 
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1120px) {
     .main-layout {
         max-width: 980px !important;
         margin-left: auto;
