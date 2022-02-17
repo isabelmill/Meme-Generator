@@ -567,23 +567,22 @@ body.menu-open .main-screen {
     }
 
     .btns {
-
         flex-direction: column;
         gap: 10px;
-    }
-
-    .more-keywords-container {
-        display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
+        margin-right: 80px;
+
+
     }
 
-    .keywords-list {
-        margin-left: auto;
-        margin-right: auto;
+    input {
+        width: 200px;
+    }
 
+
+    .keywords-list {
+        display: none;
     }
 
     .search-icon {

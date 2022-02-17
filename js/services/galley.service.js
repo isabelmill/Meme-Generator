@@ -32,7 +32,6 @@ function _createImages() {
             _createImg(['Funny']),
             _createImg(['Movie']),
             _createImg(['Funny']),
-            _createImg(['Funny', 'Pablo']),
 
         ]
     }
