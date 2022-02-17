@@ -46,6 +46,7 @@ function openEditor() {
     document.querySelector(".memes-gallery").classList.add('hide');
     document.querySelector(".about-me").classList.add('hide');
     document.querySelector(".btns").classList.add('hide');
+    document.querySelector(".more-keywords-container").classList.add('hide');
     document.querySelector(".main-footer").classList.add('hide');
     document.querySelector('.meme-editor').classList.remove('hide');
     document.querySelector('.rights').classList.remove('hide');

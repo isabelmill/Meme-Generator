@@ -37,9 +37,6 @@ function updateMeme(elImg) {
     }
 }
 
-
-
-
 function getgMeme() {
     return gMeme;
 }
@@ -49,7 +46,6 @@ function updateMemeImg(elImg) {
     meme.elImg = elImg;
     return meme;
 }
-
 
 function drawArc(x, y) {
     gCtx.beginPath()

@@ -2,15 +2,16 @@
 
 var gImgs;
 var imgId = 0;
+var gMapKeyWords;
 _createImages()
 
 function _createImages() {
     if (!gImgs || !gImgs.length) {
         gImgs = [
-            _createImg(['Politics']),
-            _createImg(['Animals']),
+            _createImg(['Politics', 'Trump']),
+            _createImg(['Animals', 'Puppy']),
             _createImg(['Baby', 'Animals']),
-            _createImg(['Animals']),
+            _createImg(['Animals', 'Cat']),
             _createImg(['Baby']),
             _createImg(['Funny']),
             _createImg(['Funny']),
@@ -23,7 +24,7 @@ function _createImages() {
             _createImg(['Movie']),
             _createImg(['Movie']),
             _createImg(['Movie']),
-            _createImg(['Politics']),
+            _createImg(['Politics', 'Putin']),
             _createImg(['Movie']),
             _createImg(['Funny']),
             _createImg(['Funny']),
@@ -31,7 +32,7 @@ function _createImages() {
             _createImg(['Funny']),
             _createImg(['Movie']),
             _createImg(['Funny']),
-            _createImg(['Funny']),
+            _createImg(['Funny', 'Pablo']),
 
         ]
     }
@@ -49,4 +50,26 @@ function _createImg(keywords) {
 function getImgsForDisplay() {
     var imgsForDisplay = gImgs.slice()
     return imgsForDisplay
+}
+
+function getKeysMap() {
+    var imgs = getImgsForDisplay()
+    var keys = [];
+    imgs.map((img) => {
+        img.keywords.forEach((key) => {
+            keys.push(key)
+        })
+    })
+    var keysMap = getWordCount(keys)
+    gMapKeyWords = keysMap
+    return gMapKeyWords
+}
+
+function getWordCount(array) {
+    let map = {};
+    for (let i = 0; i < array.length; i++) {
+        let item = array[i];
+        map[item] = (map[item] + 1) || 1;
+    }
+    return map;
 }

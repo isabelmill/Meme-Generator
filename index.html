@@ -28,8 +28,8 @@
     </header>
 
     <!-- Main Gallery layout  -->
-    <main class="main-layout">
-        <section>
+    <section>
+        <main class="main-layout">
             <div class="btns ">
                 <input list="keys" placeholder="Filter Here" class="filter-choice" onchange="onFilter(this.value)">
                 <datalist id="keys">
@@ -38,8 +38,26 @@
                 <div class="search-icon">
                     <img class="search-icon" src="./ICONS/search-icon.png" alt="">
                 </div>
+                <div class="nav-keywords-container">
+                    <ul class="keywords-list">
+                        <li>Animals</li>
+                        <li>Baby</li>
+                        <li>Cat</li>
+                        <li>Funny</li>
+                        <li>Movie</li>
+                        <li onclick="moreKeyWord()">More...</li>
+                    </ul>
+                </div>
             </div>
-            <!-- here will be the most common words  -->
+            <div class="more-keywords-container hide">
+                <div class="keywords-list">
+                    <li>Pablo</li>
+                    <li>Movie</li>
+                    <li>Politics</li>
+                    <li>Puppy</li>
+                    <li>Putin</li>
+                    <li>Trump</li>
+                </div>
             </div>
 
             <!-- Rendering the memes here  -->
@@ -136,51 +154,52 @@
                 <small>© 2022 Isabel Mill - All Rights Reserved </small>
             </div>
 
-    </main>
+        </main>
 
-    <!-- About me section  -->
-    <section class="about-me">
-        <div class="about-me-container">
-            <div class="my-img">
-                <img class="me" src="./my-img/me.jpg" alt="">
-            </div>
-            <div class="about-text">
-                <h4>Isabel Mill</h4>
-                <br />
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione minus veritatis quo numquam eaque.
-                </p>
-                <br />
-                <div class="about-me-btns" id="about">
-                    <a class="icon-btn" href="https://www.facebook.com/profile.php?id=100010707871314" target="_blank">
-                        <img class="icon " src="./ICONS/facebook-logo.png" alt="" />
-                    </a>
-                    <a class="icon-btn" href="https://github.com/isabelmill" target="_blank">
-                        <img class="icon " src="./ICONS/github-logo.png" alt="" />
-                    </a>
-                    <a class="icon-btn" href="http://linkedin.com/in/isabel-mill-bb5a05177" target="_blank">
-                        <img class="icon " src="./ICONS/linkedin-logo.png" alt="" />
-                    </a>
+        <!-- About me section  -->
+        <section class="about-me">
+            <div class="about-me-container">
+                <div class="my-img">
+                    <img class="me" src="./my-img/me.jpg" alt="">
+                </div>
+                <div class="about-text">
+                    <h4>Isabel Mill</h4>
+                    <br />
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione minus veritatis quo numquam
+                        eaque.
+                    </p>
+                    <br />
+                    <div class="about-me-btns" id="about">
+                        <a class="icon-btn" href="https://www.facebook.com/profile.php?id=100010707871314"
+                            target="_blank">
+                            <img class="icon " src="./ICONS/facebook-logo.png" alt="" />
+                        </a>
+                        <a class="icon-btn" href="https://github.com/isabelmill" target="_blank">
+                            <img class="icon " src="./ICONS/github-logo.png" alt="" />
+                        </a>
+                        <a class="icon-btn" href="http://linkedin.com/in/isabel-mill-bb5a05177" target="_blank">
+                            <img class="icon " src="./ICONS/linkedin-logo.png" alt="" />
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <!-- Footer  -->
-    <footer class="main-footer">
-        <div class="logo-footer">
-            MEME - GENERATOR
-        </div>
-        <small>© 2022 Isabel Mill - All Rights Reserved </small>
-    </footer>
+        <!-- Footer  -->
+        <footer class="main-footer">
+            <div class="logo-footer">
+                MEME - GENERATOR
+            </div>
+            <small>© 2022 Isabel Mill - All Rights Reserved </small>
+        </footer>
 
-    <script src="js/services/i18n-service.js"></script>
-    <script src="js/services/storage.service.js"></script>
-    <script src="js/services/upload-service.js"></script>
-    <script src="js/services/galley.service.js"></script>
-    <script src="js/services/meme.service.js"></script>
-    <script src="js/meme.controller.js"></script>
-    <script src="js/gallery.controller.js"></script>
+        <script src="js/services/storage.service.js"></script>
+        <script src="js/services/upload-service.js"></script>
+        <script src="js/services/galley.service.js"></script>
+        <script src="js/services/meme.service.js"></script>
+        <script src="js/meme.controller.js"></script>
+        <script src="js/gallery.controller.js"></script>
 </body>
 
 </html>
