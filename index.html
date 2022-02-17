@@ -18,12 +18,12 @@
             <div class="logo" onclick="openGallery()">MEME - GENERATOR</div>
             <nav class="main-nav-conatiner">
                 <ul class="main-nav clean-list flex">
-                    <li><a>Gallery</a></li>
+                    <li><a onclick="openGallery()">Gallery</a></li>
                     <li><a>Memes</a></li>
                     <li><a href="#about" style="color:white">About</a></li>
                 </ul>
             </nav>
-            <!-- <button class="btn-menu" onclick="toggleMenu()">☰</button> -->
+            <button class="btn-menu" onclick="toggleMenu()">☰</button>
         </div>
     </header>
 
@@ -49,7 +49,7 @@
             </section>
 
             <!-- The meme Editor  -->
-            <section class="meme-editor hide">
+            <section class="meme-editor  hide">
                 <div class="canvas-container">
                     <canvas class="canvas"></canvas>
                 </div>
@@ -73,10 +73,10 @@
 
                     <!-- Edit buttons - second row  -->
                     <div class="btns-second-editor">
-                        <button class="icon-btn" onclick="changeFontSize()" data-name="Increase Font">
+                        <button class="icon-btn" onclick="changeFontSize(2)" data-name="Increase Font">
                             <img class="icon" src="./ICONS/increase font - icon.png" alt="" />
                         </button>
-                        <button class="icon-btn" onclick="changeFontSize()" data-name="Decrease Font">
+                        <button class="icon-btn" onclick="changeFontSize(-2)" data-name="Decrease Font">
                             <img class="icon" src="./ICONS/decrease font - icon.png" alt="" />
                         </button>
                         <button class="icon-btn" onclick="setAlign('start')" data-name="Align Start">
@@ -95,14 +95,15 @@
                         <select class="font-select" onchange="setFont(this.value)">
                             <option value="Impact">Impact</option>
                             <option value="Arial">Arial</option>
+                            <option value="Montserrat">Montserrat</option>
                         </select>
 
-                        <button class="icon-btn" onclick="openColorPicker(true)" data-name="Stroke Color">
+                        <button class="icon-btn" data-name="Stroke Color" onclick="clickChangeColorStroke()">
                             <img class="icon" src="./ICONS/text stroke.png" alt="" />
                         </button>
                         <input class="stroke-color-input" type="color" oninput="changeStrokeColor()" hidden>
 
-                        <button class="icon-btn" onclick="openColorPicker(false)" data-name="Fill Color">
+                        <button class="icon-btn" data-name="Fill Color" onclick="clickChangeColor()">
                             <img class="icon" src="./ICONS/paint-board-and-brush.png" alt="" />
                         </button>
                         <input class="color-input" type="color" oninput="changeColor()" hidden>
@@ -121,7 +122,7 @@
                             Save
                         </button>
                         <button class="download-btn" data-name="download">
-                            <a onclick="onDownloadMeme(this)">Download Meme</a>
+                            <a onclick="onDownloadMeme(this)" style="color:white">Download Meme</a>
                         </button>
                         <button class="upload-btn" data-name="upload">
                             <a onclick="onUploadImg()">Share</a>
@@ -131,6 +132,9 @@
                 </div>
 
             </section>
+            <div class="rights hide">
+                <small>© 2022 Isabel Mill - All Rights Reserved </small>
+            </div>
 
     </main>
 
@@ -147,14 +151,14 @@
                 </p>
                 <br />
                 <div class="about-me-btns" id="about">
-                    <a class="icon-btn" href="https://www.facebook.com/profile.php?id=100010707871314">
-                        <img class="icon " src="/ICONS/facebook-logo.png" alt="" />
+                    <a class="icon-btn" href="https://www.facebook.com/profile.php?id=100010707871314" target="_blank">
+                        <img class="icon " src="./ICONS/facebook-logo.png" alt="" />
                     </a>
-                    <a class="icon-btn" href="https://github.com/isabelmill">
-                        <img class="icon " src="/ICONS/github-logo.png" alt="" />
+                    <a class="icon-btn" href="https://github.com/isabelmill" target="_blank">
+                        <img class="icon " src="./ICONS/github-logo.png" alt="" />
                     </a>
                     <a class="icon-btn" href="http://linkedin.com/in/isabel-mill-bb5a05177" target="_blank">
-                        <img class="icon " src="/ICONS/linkedin-logo.png" alt="" />
+                        <img class="icon " src="./ICONS/linkedin-logo.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -170,7 +174,7 @@
         <small>© 2022 Isabel Mill - All Rights Reserved </small>
     </footer>
 
-    <script src="js/i18n-service.js"></script>
+    <script src="js/services/i18n-service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/upload-service.js"></script>
     <script src="js/services/galley.service.js"></script>
