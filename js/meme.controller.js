@@ -174,4 +174,5 @@ function onSaveMeme() {
         url
     });
     saveToStorage('SavedMemesNum', gSavedMemes);
+    openSavedMemes()
 }
