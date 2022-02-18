@@ -3,12 +3,17 @@
 var gCanvas;
 var gCtx;
 var gStartPos;
+var gSavedMemes;
 
 
 function init() {
     gCanvas = document.querySelector('.canvas');
     gCtx = gCanvas.getContext('2d');
     renderImgs()
+    renderFilterKeywords()
+    renderKeywords()
+    renderMoreKeywords()
+    renderSavedMemes();
     resizeCanvas();
 }
 
@@ -23,6 +28,18 @@ function onImgSelect(elImg) {
         return;
     } else updateMemeImg(elImg);
     meme.lines.forEach((line, idx) => writeText(idx, true))
+}
+
+function onImgSelectFromGallery(elImg) {
+    openSavedMemeEditor()
+    var meme = getgMeme()
+    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height);
+    if (!meme || !meme.lines.length) {
+        resizeCanvas();
+        updateMeme(elImg);
+        renderCanvas();
+        return;
+    } else updateMemeImg(elImg);
 }
 
 // Canvas functions
@@ -41,29 +58,7 @@ function resizeCanvas() {
 }
 
 
-//Navigation functions
-function openEditor() {
-    document.querySelector(".memes-gallery").classList.add('hide');
-    document.querySelector(".about-me").classList.add('hide');
-    document.querySelector(".btns").classList.add('hide');
-    document.querySelector(".more-keywords-container").classList.add('hide');
-    document.querySelector(".main-footer").classList.add('hide');
-    document.querySelector('.meme-editor').classList.remove('hide');
-    document.querySelector('.rights').classList.remove('hide');
-}
 
-function openGallery() {
-    document.querySelector('.text-line').value = '';
-    document.querySelector(".memes-gallery").classList.remove('hide');
-    document.querySelector(".about-me").classList.remove('hide');
-    document.querySelector(".btns").classList.remove('hide');
-    document.querySelector(".main-footer").classList.remove('hide');
-    document.querySelector('.meme-editor').classList.add('hide');
-    document.querySelector('.rights').classList.add('hide');
-    gIdLine = 0;
-    gMeme = null;
-    document.querySelector('.text-line').value = '';
-}
 
 //Editor functions
 
@@ -71,12 +66,6 @@ function setLineTxt(text) {
     if (gMeme.lines[gMeme.selectedLineIdx].isSticker) addLine();
     gMeme.lines[gMeme.selectedLineIdx].text = text;
     writeText(gMeme.selectedLineIdx);
-}
-
-function addLine() {
-    document.querySelector('.text-line').value = '';
-    document.querySelector('.text-line').focus();
-    addLineToMeme();
 }
 
 function switchLine() {
@@ -170,4 +159,19 @@ function onStickerSelect(elSticker) {
     renderCanvas();
     var meme = getgMeme();
     drawRect(meme.lines[meme.selectedLineIdx]);
+}
+
+function onSaveMeme() {
+    gSavedMemes = loadFromStorage('SavedMemesNum');
+    if (!gSavedMemes) {
+        saveToStorage('SavedMemesNum', 1);
+        gSavedMemes = 1;
+    } else gSavedMemes++;
+    renderCanvas();
+    var url = gCanvas.toDataURL();
+    saveToStorage(`meme-${gSavedMemes}`, {
+        gMeme,
+        url
+    });
+    saveToStorage('SavedMemesNum', gSavedMemes);
 }

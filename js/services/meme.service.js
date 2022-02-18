@@ -56,6 +56,11 @@ function drawArc(x, y) {
 
 }
 
+function addLine() {
+    document.querySelector('.text-line').value = '';
+    addLineToMeme();
+}
+
 function addLineToMeme(isEmptyLines) {
     if (isEmptyLines) gIdLine = 0;
     if (gMeme.lines.length === 1 && gMeme.lines[0].text === '') return;
@@ -159,7 +164,6 @@ function addSticker(elSticker) {
 }
 
 function drawRect(memeLine) {
-    console.log('memeLine:', memeLine);
     var x = memeLine.rectSize.pos.x;
     var y = memeLine.rectSize.pos.y;
     var width = (memeLine.isSticker) ? memeLine.rectSize.width : gCanvas.width;

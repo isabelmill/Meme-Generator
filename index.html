@@ -19,7 +19,7 @@
             <nav class="main-nav-conatiner">
                 <ul class="main-nav clean-list flex">
                     <li><a onclick="openGallery()">Gallery</a></li>
-                    <li><a>Memes</a></li>
+                    <li><a onclick="openSavedMemes()">Memes</a></li>
                     <li><a href="#about" style="color:white">About</a></li>
                 </ul>
             </nav>
@@ -33,30 +33,20 @@
             <div class="btns ">
                 <input list="keys" placeholder="Filter Here" class="filter-choice" onchange="onFilter(this.value)">
                 <datalist id="keys">
-                    <option value="Funny"></option>
+                    <!-- rendering the key-words here  -->
                 </datalist>
                 <div class="search-icon">
                     <img class="search-icon" src="./ICONS/search-icon.png" alt="">
                 </div>
                 <div class="nav-keywords-container">
-                    <ul class="keywords-list">
-                        <li>Animals</li>
-                        <li>Baby</li>
-                        <li>Cat</li>
-                        <li>Funny</li>
-                        <li>Movie</li>
-                        <li onclick="moreKeyWord()">More...</li>
-                    </ul>
+                    <div class="keywords-list">
+                        <!-- rendering more key-words here  -->
+                    </div>
                 </div>
             </div>
             <div class="more-keywords-container hide">
-                <div class="keywords-list">
-                    <li>Pablo</li>
-                    <li>Movie</li>
-                    <li>Politics</li>
-                    <li>Puppy</li>
-                    <li>Putin</li>
-                    <li>Trump</li>
+                <div class="keywords-second-list">
+                    <!-- rendering more key-words here  -->
                 </div>
             </div>
 
@@ -146,10 +136,15 @@
                             <a class="upload-btn" onclick="uploadImg()" style="color:white">Share</a>
                         </button>
                     </div>
-
                 </div>
-
             </section>
+
+            <!-- Saved memes Gallery-->
+            <section class="saved-memes-gallery">
+                <div class="saved-container hide">
+                </div>
+            </section>
+
             <div class="rights hide">
                 <small>© 2022 Isabel Mill - All Rights Reserved </small>
             </div>
@@ -185,7 +180,6 @@
             </div>
         </section>
 
-
         <!-- Footer  -->
         <footer class="main-footer">
             <div class="logo-footer">
@@ -196,7 +190,7 @@
 
         <script src="js/services/storage.service.js"></script>
         <script src="js/services/upload-service.js"></script>
-        <script src="js/services/galley.service.js"></script>
+        <script src="js/services/gallery.service.js"></script>
         <script src="js/services/meme.service.js"></script>
         <script src="js/meme.controller.js"></script>
         <script src="js/gallery.controller.js"></script>
