@@ -1,5 +1,4 @@
 @import 'setup/typography.css';
-@import 'basic/mq.css';
 
 * {
     box-sizing: border-box;
@@ -425,6 +424,8 @@ img {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 
