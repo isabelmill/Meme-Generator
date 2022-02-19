@@ -72,3 +72,11 @@ function getWordCount(array) {
     }
     return map;
 }
+
+function getSavedFromStorage() {
+    var memes = [];
+    for (var i = 1; i <= loadFromStorage('SavedMemesNum'); i++) {
+        memes.push(loadFromStorage(`meme-${i}`));
+    }
+    return memes
+}

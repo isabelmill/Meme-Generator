@@ -1,10 +1,12 @@
 'use strict'
 
+
 var gCanvas;
 var gMeme;
 var gIdLine = 0;
 var gSizeFont = 40;
 var gFont = 'Impact'
+
 
 
 function updateMeme(elImg) {
@@ -45,20 +47,6 @@ function updateMemeImg(elImg) {
     var meme = getgMeme();
     meme.elImg = elImg;
     return meme;
-}
-
-function drawArc(x, y) {
-    gCtx.beginPath()
-    gCtx.lineWidth = '6'
-    gCtx.arc(x, y, 7, 0, 2 * Math.PI)
-    gCtx.fillStyle = 'blue'
-    gCtx.fill()
-
-}
-
-function addLine() {
-    document.querySelector('.text-line').value = '';
-    addLineToMeme();
 }
 
 function addLineToMeme(isEmptyLines) {
@@ -111,7 +99,7 @@ function changeSizeToLine(size) {
     }
 }
 
-function getPosXToWrite(lineIdx) {
+function getPos(lineIdx) {
     gCanvas = document.querySelector('.canvas');
     var xPos;
     switch (gMeme.lines[lineIdx].align) {
@@ -150,7 +138,6 @@ function addSticker(elSticker) {
         y: gCanvas.height / 3,
         sizeW: 100,
         sizeH: 100,
-        size: 100,
         rectSize: {
             pos: {
                 x: gCanvas.width / 3,
@@ -166,8 +153,8 @@ function addSticker(elSticker) {
 function drawRect(memeLine) {
     var x = memeLine.rectSize.pos.x;
     var y = memeLine.rectSize.pos.y;
-    var width = (memeLine.isSticker) ? memeLine.rectSize.width : gCanvas.width;
     var height = (memeLine.isSticker) ? memeLine.sizeH : memeLine.size;
+    var width = (memeLine.isSticker) ? memeLine.rectSize.width : gCanvas.width;
     gCtx.beginPath()
     gCtx.rect(x, y, width, height + 10)
     gCtx.fillStyle = '#aab5b83d'
@@ -178,22 +165,56 @@ function drawRect(memeLine) {
 
 function writeText(lineIdx, isText) {
     var meme = getgMeme();
-    var memeLine = meme.lines[lineIdx];
+    var currLine = meme.lines[lineIdx];
     if (!isText) {
         renderCanvas();
-        drawRect(memeLine);
+        drawRect(currLine);
     }
-    if (memeLine.isSticker) {
+    gCtx.font = `${currLine.size}px ${currLine.font}`;
+    gCtx.lineWidth = 2;
+    gCtx.textBaseling = "middle"
+    gCtx.strokeStyle = currLine.colorStroke;
+    gCtx.textAlign = currLine.align;
+    gCtx.fillStyle = currLine.color;
+    gCtx.fillText(currLine.text, currLine.x, currLine.y);
+    gCtx.strokeText(currLine.text, currLine.x, currLine.y);
+    if (currLine.isSticker) {
         var img = new Image();
-        img.src = memeLine.img.src;
-        gCtx.drawImage(img, memeLine.x, memeLine.y, memeLine.sizeW, memeLine.sizeH);
-    } else {
-        gCtx.strokeStyle = memeLine.colorStroke;
-        gCtx.lineWidth = 2;
-        gCtx.textAlign = memeLine.align;
-        gCtx.fillStyle = memeLine.color;
-        gCtx.font = `${memeLine.size}px ${memeLine.font}`;
-        gCtx.fillText(memeLine.text, memeLine.x, memeLine.y);
-        gCtx.strokeText(memeLine.text, memeLine.x, memeLine.y);
+        img.src = currLine.img.src;
+        gCtx.drawImage(img, currLine.x, currLine.y, currLine.sizeW, currLine.sizeH);
     }
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
+}
+
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function isLineClicked(pos, line) {
+    return pos.x > line.rectSize.pos.x &&
+        pos.x < (line.rectSize.pos.x + line.rectSize.width) &&
+        pos.y > line.rectSize.pos.y &&
+        pos.y < (line.rectSize.pos.y + line.rectSize.height)
+}
+
+function moveLine(memeLine, dx, dy) {
+    memeLine.x += dx;
+    memeLine.y += dy;
+    memeLine.rectSize.pos.x += dx;
+    memeLine.rectSize.pos.y += dy;
 }

@@ -104,9 +104,11 @@ function openEditor() {
     document.querySelector('.meme-editor').classList.remove('hide');
     document.querySelector('.rights').classList.remove('hide');
     document.querySelector('.about-li').classList.add('hide');
+    document.querySelector('.saved-memes').classList.add('hide');
 }
 
 function openGallery() {
+    onFilter('ALL')
     document.querySelector('.text-line').value = '';
     document.querySelector(".memes-gallery").classList.remove('hide');
     document.querySelector(".about-me").classList.remove('hide');
@@ -116,6 +118,7 @@ function openGallery() {
     document.querySelector('.rights').classList.add('hide');
     document.querySelector('.saved-container').classList.add('hide');
     document.querySelector('.about-li').classList.remove('hide');
+    document.querySelector('.saved-memes').classList.add('hide');
     gIdLine = 0;
     gMeme = null;
     document.querySelector('.text-line').value = '';
@@ -131,6 +134,7 @@ function openSavedMemes() {
     document.querySelector('.about-li').classList.add('hide');
     document.querySelector('.rights').classList.remove('hide');
     document.querySelector('.saved-container').classList.remove('hide');
+    document.querySelector('.saved-memes').classList.remove('hide');
     renderSavedMemes();
     gIdLine = 0;
     gMeme = null;
