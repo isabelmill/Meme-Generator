@@ -144,29 +144,14 @@ function changeFontSize(size) {
 }
 
 function setAlign(align) {
-    console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
     if (gMeme.lines[gMeme.selectedLineIdx].isSticker) return;
-    if (gMeme.lines.length === 1 && gMeme.lines[0].text === '') return;
     gMeme.lines[gMeme.selectedLineIdx].align = align;
-    if (align === 'end') {}
-    var posX = getPos(gMeme.selectedLineIdx);
-    gMeme.lines[gMeme.selectedLineIdx].x = posX;
+    gMeme.lines[gMeme.selectedLineIdx].x = getPos(gMeme.selectedLineIdx);
     renderCanvas();
     drawRect(gMeme.lines[gMeme.selectedLineIdx]);
 }
 
 
-function clickChangeColor() {
-    if (gMeme.lines[gMeme.selectedLineIdx].isSticker) return;
-    var elColor = document.querySelector('.color-input');
-    elColor.click();
-}
-
-function clickChangeColorStroke() {
-    if (gMeme.lines[gMeme.selectedLineIdx].isSticker) return;
-    var elColor = document.querySelector('.stroke-color-input');
-    elColor.click();
-}
 
 function changeColor() {
     var elColor = document.querySelector('.color-input');
@@ -178,6 +163,16 @@ function changeStrokeColor() {
     var elColor = document.querySelector('.stroke-color-input');
     gMeme.lines[gMeme.selectedLineIdx].colorStroke = elColor.value;
     renderCanvas();
+}
+
+function clickChangeColor() {
+    if (gMeme.lines[gMeme.selectedLineIdx].isSticker) return;
+    document.querySelector('.color-input').click();
+}
+
+function clickChangeColorStroke() {
+    if (gMeme.lines[gMeme.selectedLineIdx].isSticker) return;
+    document.querySelector('.stroke-color-input').click();
 }
 
 function onDownloadMeme(elLink) {

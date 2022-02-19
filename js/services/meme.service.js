@@ -101,22 +101,20 @@ function changeSizeToLine(size) {
 
 function getPos(lineIdx) {
     gCanvas = document.querySelector('.canvas');
-    var xPos;
     switch (gMeme.lines[lineIdx].align) {
         case 'start': {
-            xPos = 50;
+            gMeme.x = 50;
             break;
         }
         case 'center': {
-            xPos = gCanvas.width / 2;
+            gMeme.x = gCanvas.width / 2;
             break;
         }
         case 'end': {
-            xPos = gCanvas.width - 50;
+            gMeme.x = gCanvas.width - 50;
             break;
         }
     }
-    gMeme.x = xPos;
     return gMeme.x;
 }
 
