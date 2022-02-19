@@ -70,6 +70,7 @@ function onMove(ev) {
         gStartPos = pos
         drawRect(memeLine);
         renderCanvas()
+        drawRect(gMeme.lines[gMeme.selectedLineIdx])
     }
 }
 
