@@ -51,7 +51,6 @@ function updateMemeImg(elImg) {
 
 function addLineToMeme(isEmptyLines) {
     if (isEmptyLines) gIdLine = 0;
-    if (gMeme.lines.length === 1 && gMeme.lines[0].text === '') return;
     var gCanvas = document.querySelector('.canvas');
     var yPos = (gMeme.lines.length === 1) ? gCanvas.height - 20 : gCanvas.height / 2;
     if (gMeme.lines.length === 0) yPos = 50;

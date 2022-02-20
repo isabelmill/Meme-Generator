@@ -101,8 +101,10 @@ function setLineTxt(text) {
 }
 
 function addLine() {
+    var meme = getgMeme();
     document.querySelector('.text-line').value = '';
     addLineToMeme();
+    drawRect(meme.lines[meme.selectedLineIdx])
 }
 
 function switchLine() {
@@ -117,7 +119,6 @@ function switchLine() {
 function deleteLine() {
     document.querySelector('.text-line').value = '';
     var meme = getgMeme();
-    if (meme.lines.length === 1 && meme.lines[0].text === '') return;
     var currlineIdx = meme.selectedLineIdx;
     meme.lines.splice(currlineIdx, 1);
     if (meme.lines.length) {

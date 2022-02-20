@@ -37,7 +37,7 @@ function renderKeywords() {
     `
     }
     strHTML += `
-    <button class="keyword-btn" style="font-size:14px" onclick="moreKeyWords()">More...</button>
+    <button class="keyword-btn" style="font-size:14px" onclick="toggleMoreKeyWords()">More...</button>
     `
 
 
@@ -60,7 +60,7 @@ function renderMoreKeywords() {
     document.querySelector('.keywords-second-list').innerHTML = strHTMLMore
 }
 
-function moreKeyWords() {
+function toggleMoreKeyWords() {
     document.querySelector('.more-keywords-container').classList.toggle('hide');
 }
 
@@ -81,6 +81,8 @@ function onFilter(value) {
         }
     })
     renderImgs(filtered)
+    document.querySelector('input[name=filter]').value = ''
+
 }
 
 function renderSavedMemes() {
