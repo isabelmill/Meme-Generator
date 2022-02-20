@@ -62,6 +62,7 @@ function renderMoreKeywords() {
 
 function toggleMoreKeyWords() {
     document.querySelector('.more-keywords-container').classList.toggle('hide');
+    // document.querySelector('.more-keywords-container').style.transform('translateY(15px)');
 }
 
 function toggleMenu() {

@@ -104,6 +104,7 @@ function addLine() {
     var meme = getgMeme();
     document.querySelector('.text-line').value = '';
     addLineToMeme();
+    renderCanvas();
     drawRect(meme.lines[meme.selectedLineIdx])
 }
 
@@ -163,6 +164,7 @@ function changeColor() {
 function changeStrokeColor() {
     var elColor = document.querySelector('.stroke-color-input');
     gMeme.lines[gMeme.selectedLineIdx].colorStroke = elColor.value;
+    clickChangeColorStroke()
     renderCanvas();
 }
 
@@ -177,9 +179,9 @@ function clickChangeColorStroke() {
 }
 
 function onDownloadMeme(elLink) {
-    const data = gCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'my-meme.jpg'
+    var meme = getgMeme();
+    meme.lines.forEach((line, idx) => removeRect(line, elLink))
+    renderCanvas();
 }
 
 function onSetFont(font) {
@@ -189,8 +191,8 @@ function onSetFont(font) {
 function onStickerSelect(elSticker) {
     document.querySelector('.text-line').value = '';
     addSticker(elSticker);
-    renderCanvas();
     var meme = getgMeme();
+    renderCanvas();
     drawRect(meme.lines[meme.selectedLineIdx]);
 }
 

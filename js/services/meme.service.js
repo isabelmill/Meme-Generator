@@ -56,7 +56,7 @@ function addLineToMeme(isEmptyLines) {
     if (gMeme.lines.length === 0) yPos = 50;
     gMeme.lines.push({
         id: gIdLine++,
-        text: '',
+        text: 'Add text here',
         size: gSizeFont,
         font: gFont,
         align: 'center',
@@ -76,6 +76,8 @@ function addLineToMeme(isEmptyLines) {
         isSticker: false
     })
     if (!isEmptyLines) gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    drawRect(gMeme.lines[gMeme.selectedLineIdx])
+
 }
 
 function changeIdLines(gMeme) {
@@ -214,4 +216,17 @@ function moveLine(memeLine, dx, dy) {
     memeLine.y += dy;
     memeLine.rectSize.pos.x += dx;
     memeLine.rectSize.pos.y += dy;
+}
+
+function removeRect(line, elLink) {
+    var currLine = line;
+    console.log('currLine:', currLine);
+    currLine.rectSize.width = 0
+    renderCanvas();
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-meme.jpg'
+    if (currLine.isSticker) {
+        currLine.rectSize.width = 100
+    } else currLine.rectSize.width = 310
 }
