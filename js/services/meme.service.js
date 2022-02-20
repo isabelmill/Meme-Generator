@@ -76,7 +76,6 @@ function addLineToMeme(isEmptyLines) {
         isSticker: false
     })
     if (!isEmptyLines) gMeme.selectedLineIdx = gMeme.lines.length - 1;
-    drawRect(gMeme.lines[gMeme.selectedLineIdx])
 
 }
 
